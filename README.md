@@ -41,7 +41,7 @@ Short description with key technologies and outcomes.
 - Improving communication and collaboration in team environments
 
 ## 📫 Contact
-- **Email:** student@university.edu
+- **Email:** [yourname]@[university].edu
 - **LinkedIn:** https://linkedin.com/in/yourname
 - **Portfolio:** https://yourportfolio.com
 
