@@ -36,6 +36,33 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Ambient orbs — CSS-only, transform-only animations (compositor thread, zero JS cost) */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translateZ(0) translate(0px, 0px); }
+  50%       { transform: translateZ(0) translate(28px, -22px); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translateZ(0) translate(0px, 0px); }
+  50%       { transform: translateZ(0) translate(-24px, 30px); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translateZ(0) translate(0px, 0px); }
+  50%       { transform: translateZ(0) translate(20px, -18px); }
+}
+
+.orb-1 {
+  will-change: transform;
+  animation: orb-drift-1 38s ease-in-out infinite;
+}
+.orb-2 {
+  will-change: transform;
+  animation: orb-drift-2 30s ease-in-out infinite 10s;
+}
+.orb-3 {
+  will-change: transform;
+  animation: orb-drift-3 24s ease-in-out infinite 18s;
+}
+
 ::selection {
   background-color: rgba(201, 149, 107, 0.35);
   color: #EDE5DA;

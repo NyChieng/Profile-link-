@@ -1,73 +1,47 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-const orbs = [
-  {
-    top: "8%",
-    left: "5%",
-    width: 700,
-    height: 700,
-    color: "#C9956B",
-    opacity: 0.042,
-    duration: 36,
-    delay: 0,
-    x: ["0%", "4%", "0%"],
-    y: ["0%", "-3%", "0%"],
-  },
-  {
-    top: "48%",
-    right: "2%",
-    left: undefined,
-    width: 560,
-    height: 560,
-    color: "#8B5E38",
-    opacity: 0.036,
-    duration: 28,
-    delay: 10,
-    x: ["0%", "-3%", "0%"],
-    y: ["0%", "4%", "0%"],
-  },
-  {
-    top: "75%",
-    left: "28%",
-    width: 440,
-    height: 440,
-    color: "#C9956B",
-    opacity: 0.028,
-    duration: 22,
-    delay: 18,
-    x: ["0%", "5%", "-2%", "0%"],
-    y: ["0%", "-4%", "2%", "0%"],
-  },
-];
-
+// Pure CSS ambient orbs — no JS animation, no blur filter.
+// transform-only keyframes run entirely on the compositor thread.
 export default function AmbientOrbs() {
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden>
-      {orbs.map((orb, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full"
-          style={{
-            top: orb.top,
-            left: orb.left,
-            right: orb.right ?? undefined,
-            width: orb.width,
-            height: orb.height,
-            background: `radial-gradient(circle, ${orb.color} 0%, transparent 70%)`,
-            opacity: orb.opacity,
-            filter: "blur(64px)",
-          }}
-          animate={{ x: orb.x, y: orb.y, scale: [1, 1.05, 0.97, 1] }}
-          transition={{
-            duration: orb.duration,
-            delay: orb.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+    <div
+      className="fixed inset-0 pointer-events-none overflow-hidden z-0"
+      aria-hidden
+    >
+      {/* Top-left warm glow */}
+      <div
+        className="orb-1 absolute rounded-full"
+        style={{
+          top: "4%",
+          left: "2%",
+          width: 640,
+          height: 640,
+          background:
+            "radial-gradient(circle, rgba(201,149,107,0.07) 0%, transparent 62%)",
+        }}
+      />
+      {/* Mid-right glow */}
+      <div
+        className="orb-2 absolute rounded-full"
+        style={{
+          top: "46%",
+          right: "0",
+          width: 520,
+          height: 520,
+          background:
+            "radial-gradient(circle, rgba(160,110,60,0.055) 0%, transparent 62%)",
+        }}
+      />
+      {/* Bottom-centre glow */}
+      <div
+        className="orb-3 absolute rounded-full"
+        style={{
+          top: "74%",
+          left: "28%",
+          width: 400,
+          height: 400,
+          background:
+            "radial-gradient(circle, rgba(201,149,107,0.042) 0%, transparent 62%)",
+        }}
+      />
     </div>
   );
 }
