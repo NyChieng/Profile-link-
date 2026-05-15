@@ -3,8 +3,6 @@
 import FadeIn from "./FadeIn";
 import { motion } from "framer-motion";
 
-/* ─── Brand-accurate logo badges ─────────────────────────────────────────── */
-
 function AllianzLogo() {
   return (
     <div
@@ -12,20 +10,16 @@ function AllianzLogo() {
       style={{ background: "#003781" }}
     >
       <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-        {/* Simplified Allianz eagle — three nested arcs */}
         <g transform="translate(28,24)">
-          {/* top wing pair */}
           <path
             d="M0,-11 C-5,-11 -11,-5 -11,2 C-7,-2 -3,-4 0,-4 C3,-4 7,-2 11,2 C11,-5 5,-11 0,-11Z"
             fill="white"
           />
-          {/* mid body */}
           <path
             d="M-11,2 C-11,8 -7,12 -3,13 L0,14 L3,13 C7,12 11,8 11,2 C7,-2 3,-4 0,-4 C-3,-4 -7,-2 -11,2Z"
             fill="white"
             opacity="0.85"
           />
-          {/* tail */}
           <path d="M-4,14 C-2,18 0,20 0,20 C0,20 2,18 4,14Z" fill="white" opacity="0.9" />
         </g>
         <text
@@ -52,14 +46,12 @@ function YLTradingLogo() {
       style={{ background: "#1B2A4A" }}
     >
       <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-        {/* Subtle grid/tech pattern */}
         <line x1="14" y1="8" x2="14" y2="48" stroke="#C9A96B" strokeWidth="0.4" opacity="0.4" />
         <line x1="28" y1="8" x2="28" y2="48" stroke="#C9A96B" strokeWidth="0.4" opacity="0.4" />
         <line x1="42" y1="8" x2="42" y2="48" stroke="#C9A96B" strokeWidth="0.4" opacity="0.4" />
         <line x1="8" y1="14" x2="48" y2="14" stroke="#C9A96B" strokeWidth="0.4" opacity="0.4" />
         <line x1="8" y1="28" x2="48" y2="28" stroke="#C9A96B" strokeWidth="0.4" opacity="0.4" />
         <line x1="8" y1="42" x2="48" y2="42" stroke="#C9A96B" strokeWidth="0.4" opacity="0.4" />
-        {/* YL lettermark */}
         <text
           x="28"
           y="33"
@@ -89,8 +81,6 @@ function YLTradingLogo() {
   );
 }
 
-/* ─── Data ────────────────────────────────────────────────────────────────── */
-
 const experiences = [
   {
     logo: <YLTradingLogo />,
@@ -118,41 +108,55 @@ const experiences = [
   },
 ];
 
-/* ─── Component ───────────────────────────────────────────────────────────── */
-
 export default function Experience() {
   return (
-    <section id="experience" className="py-28 px-6 bg-[#F2EDE8]/40">
+    <section id="experience" className="py-32 px-6 bg-[#F2EDE8]/40">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold mb-3">
-            Experience
-          </p>
-          <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-[#2C2118] mb-16 leading-tight">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block w-5 h-px bg-[#C9956B]" />
+            <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold">
+              Experience
+            </p>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-16 leading-tight tracking-[-0.01em]">
             Where I&apos;ve grown.
           </h2>
         </FadeIn>
 
         <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-[#E0D5CB] hidden sm:block" />
+          {/* Timeline line */}
+          <div className="absolute left-[1.75rem] top-0 bottom-0 w-px bg-gradient-to-b from-[#C9956B]/60 via-[#E0D5CB] to-transparent hidden sm:block" />
 
-          <div className="space-y-12">
+          <div className="space-y-10">
             {experiences.map((exp, i) => (
               <FadeIn key={exp.company} delay={i * 0.12}>
-                <div className="sm:pl-14 relative">
-                  <div className="hidden sm:block absolute left-[7px] top-7 w-4 h-4 rounded-full bg-[#FAF8F5] border-2 border-[#C9956B] shadow-sm" />
+                <div className="sm:pl-16 relative">
+                  {/* Timeline dot */}
+                  <div className="hidden sm:flex absolute left-[1.1rem] top-8 w-3 h-3 rounded-full bg-[#FAF8F5] border-2 border-[#C9956B] shadow-sm items-center justify-center">
+                    <span className="w-1 h-1 rounded-full bg-[#C9956B]" />
+                  </div>
 
                   <motion.div
-                    whileHover={{ y: -3, boxShadow: "0 8px 32px 0 rgba(44,33,24,0.08)" }}
+                    whileHover={{ y: -4, boxShadow: "0 16px 48px 0 rgba(44,33,24,0.10)" }}
                     transition={{ duration: 0.25 }}
-                    className="bg-[#FAF8F5] rounded-2xl border border-[#E0D5CB] p-7 shadow-sm"
+                    className="bg-[#FAF8F5] rounded-2xl border border-[#E0D5CB] p-7 shadow-sm relative overflow-hidden"
                   >
+                    {/* Left accent bar */}
+                    <div
+                      className="absolute left-0 top-0 bottom-0 w-0.5 rounded-l-2xl"
+                      style={{
+                        background:
+                          "linear-gradient(to bottom, #C9956B, rgba(201,149,107,0.15))",
+                      }}
+                    />
+
                     <div className="flex items-start gap-4 mb-4">
                       {exp.logo}
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                           <div>
-                            <h3 className="font-serif text-xl font-semibold text-[#2C2118]">
+                            <h3 className="font-serif text-xl font-semibold text-[#1C1410]">
                               {exp.role}
                             </h3>
                             <p className="text-[#C9956B] font-medium text-sm mt-0.5">
@@ -168,9 +172,23 @@ export default function Experience() {
                     </div>
 
                     <p className="text-xs text-[#B09585] mb-4 flex items-center gap-1.5">
-                      <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                      <svg
+                        className="w-3 h-3 shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                        />
                       </svg>
                       {exp.location}
                     </p>

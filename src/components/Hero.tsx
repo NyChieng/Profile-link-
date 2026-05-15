@@ -6,26 +6,34 @@ import { motion } from "framer-motion";
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.85, ease } },
 };
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="blob-1 absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#EDD9C8]/50 blur-3xl" />
-        <div className="blob-2 absolute bottom-1/3 -right-24 w-80 h-80 rounded-full bg-[#C9956B]/15 blur-3xl" />
-        <div className="blob-3 absolute top-2/3 left-1/3 w-64 h-64 rounded-full bg-[#F2EDE8]/70 blur-2xl" />
-      </div>
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ background: "#0D0B0A" }}
+    >
+      {/* Grain texture */}
+      <div className="hero-grain absolute inset-0" />
+
+      {/* Radial centre glow — very subtle */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 50% at 50% 30%, #1f1814 0%, transparent 65%)",
+        }}
+      />
 
       <motion.div
         variants={container}
@@ -35,7 +43,13 @@ export default function Hero() {
       >
         {/* Profile photo */}
         <motion.div variants={item} className="flex justify-center mb-8">
-          <div className="relative w-28 h-28 rounded-full overflow-hidden border-[3px] border-[#E0D5CB] shadow-md ring-4 ring-[#FAF8F5]">
+          <div
+            className="relative w-28 h-28 rounded-full overflow-hidden"
+            style={{
+              boxShadow:
+                "0 0 0 2px rgba(201,149,107,0.45), 0 0 0 5px rgba(201,149,107,0.10), 0 0 32px rgba(201,149,107,0.12)",
+            }}
+          >
             <Image
               src="/profile.jpg"
               alt="Neng Yi (Leslie) Chieng"
@@ -46,41 +60,87 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.p
-          variants={item}
-          className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold mb-4"
-        >
-          He / Him · Sarawak, Malaysia
-        </motion.p>
+        {/* Status badge */}
+        <motion.div variants={item} className="flex justify-center mb-8">
+          <span
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[0.65rem] tracking-[0.2em] uppercase font-semibold"
+            style={{
+              background: "rgba(201,149,107,0.10)",
+              border: "1px solid rgba(201,149,107,0.28)",
+              color: "#C9956B",
+            }}
+          >
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C9956B] opacity-60" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#C9956B]" />
+            </span>
+            Open to AI Engineering Roles
+          </span>
+        </motion.div>
 
+        {/* Heading */}
         <motion.h1
           variants={item}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-[#2C2118] leading-tight mb-5"
+          className="font-serif font-bold leading-[1.04] tracking-[-0.02em] mb-6"
+          style={{
+            fontSize: "clamp(3rem, 9vw, 5.5rem)",
+            color: "#EDE5DA",
+          }}
         >
           Neng Yi
           <br />
-          <span className="text-[#C9956B]">(Leslie)</span> Chieng
+          <span style={{ color: "#C9956B", fontStyle: "italic" }}>(Leslie)</span>{" "}
+          Chieng
         </motion.h1>
 
+        {/* Sub-line */}
         <motion.p
           variants={item}
-          className="text-[#9B8578] text-lg sm:text-xl leading-relaxed mb-10 max-w-xl mx-auto"
+          className="text-base sm:text-lg leading-relaxed mb-11 tracking-wide"
+          style={{ color: "rgba(237,229,218,0.48)" }}
         >
-          Computer Science student specializing in{" "}
-          <span className="text-[#2C2118] font-medium">Artificial Intelligence</span>{" "}
-          · Aspiring AI Engineer
+          Computer Science · Artificial Intelligence
+          <span className="mx-3" style={{ color: "rgba(201,149,107,0.4)" }}>
+            ·
+          </span>
+          Swinburne University · Sarawak
         </motion.p>
 
-        <motion.div variants={item} className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* CTAs */}
+        <motion.div
+          variants={item}
+          className="flex flex-col sm:flex-row gap-3.5 justify-center"
+        >
           <a
             href="#about"
-            className="px-7 py-3 rounded-full bg-[#2C2118] text-[#FAF8F5] text-sm font-medium tracking-wide hover:bg-[#3d2f22] transition-colors duration-200 shadow-sm"
+            className="px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-colors duration-200 shadow-sm"
+            style={{ background: "#EDE5DA", color: "#0D0B0A" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = "#ffffff")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.background = "#EDE5DA")
+            }
           >
             Discover my work
           </a>
           <a
             href="#contact"
-            className="px-7 py-3 rounded-full border border-[#E0D5CB] text-[#2C2118] text-sm font-medium tracking-wide hover:bg-[#F2EDE8] transition-colors duration-200"
+            className="px-8 py-3.5 rounded-full text-sm font-medium tracking-wide transition-all duration-200"
+            style={{
+              border: "1px solid rgba(237,229,218,0.22)",
+              color: "rgba(237,229,218,0.72)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "rgba(237,229,218,0.42)";
+              e.currentTarget.style.color = "#EDE5DA";
+              e.currentTarget.style.background = "rgba(237,229,218,0.06)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "rgba(237,229,218,0.22)";
+              e.currentTarget.style.color = "rgba(237,229,218,0.72)";
+              e.currentTarget.style.background = "transparent";
+            }}
           >
             Get in touch
           </a>
@@ -91,14 +151,23 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
+        transition={{ delay: 1.8, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[#C9956B] text-[0.65rem] tracking-[0.2em] uppercase">Scroll</span>
+        <span
+          className="text-[0.6rem] tracking-[0.28em] uppercase"
+          style={{ color: "rgba(237,229,218,0.28)" }}
+        >
+          Scroll
+        </span>
         <motion.div
-          animate={{ y: [0, 7, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-[#C9956B] to-transparent"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-10"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(201,149,107,0.55), transparent)",
+          }}
         />
       </motion.div>
     </section>

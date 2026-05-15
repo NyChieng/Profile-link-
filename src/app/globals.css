@@ -2,7 +2,7 @@
 
 @theme inline {
   --color-background: #FAF8F5;
-  --color-foreground: #2C2118;
+  --color-foreground: #1C1410;
   --color-accent: #C9956B;
   --color-accent-light: #EDD9C8;
   --color-card: #F2EDE8;
@@ -18,18 +18,17 @@ html {
 
 body {
   background-color: #FAF8F5;
-  color: #2C2118;
+  color: #1C1410;
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-22px) scale(1.05); }
-}
-
-@keyframes float-medium {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(18px) scale(0.96); }
+/* Subtle grain overlay for the dark hero */
+.hero-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  opacity: 0.04;
+  pointer-events: none;
 }
 
 @keyframes fade-in-up {
@@ -37,11 +36,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.blob-1 { animation: float-slow 10s ease-in-out infinite; }
-.blob-2 { animation: float-medium 13s ease-in-out infinite; }
-.blob-3 { animation: float-slow 16s ease-in-out infinite reverse; }
-
 ::selection {
   background-color: #EDD9C8;
-  color: #2C2118;
+  color: #1C1410;
 }

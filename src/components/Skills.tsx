@@ -44,24 +44,29 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-28 px-6 bg-[#F2EDE8]/40">
+    <section id="skills" className="py-32 px-6 bg-[#F2EDE8]/40">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold mb-3">
-            Skills
-          </p>
-          <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-[#2C2118] mb-16 leading-tight">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block w-5 h-px bg-[#C9956B]" />
+            <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold">
+              Skills
+            </p>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-16 leading-tight tracking-[-0.01em]">
             What I bring to the table.
           </h2>
         </FadeIn>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-5">
           {skillGroups.map((group, gi) => (
             <FadeIn key={group.category} delay={gi * 0.08}>
               <div className="bg-[#FAF8F5] rounded-2xl border border-[#E0D5CB] p-6 h-full shadow-sm">
                 <div className="flex items-center gap-2.5 mb-5">
-                  <span className="text-[#C9956B]">{group.icon}</span>
-                  <h3 className="font-medium text-sm text-[#2C2118] tracking-wide">
+                  <span className="p-1.5 rounded-lg bg-[#F2EDE8] text-[#C9956B] border border-[#E0D5CB]">
+                    {group.icon}
+                  </span>
+                  <h3 className="font-medium text-sm text-[#1C1410] tracking-wide">
                     {group.category}
                   </h3>
                 </div>
@@ -69,11 +74,11 @@ export default function Skills() {
                   {group.skills.map((skill, si) => (
                     <motion.span
                       key={skill}
-                      initial={{ opacity: 0, scale: 0.85 }}
+                      initial={{ opacity: 0, scale: 0.88 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ delay: gi * 0.08 + si * 0.05, duration: 0.35, ease: "easeOut" }}
-                      whileHover={{ scale: 1.05, backgroundColor: "#EDD9C8" }}
+                      transition={{ delay: gi * 0.06 + si * 0.045, duration: 0.35, ease: "easeOut" }}
+                      whileHover={{ scale: 1.04, backgroundColor: "#EDD9C8", borderColor: "#C9956B" }}
                       className="text-xs px-3 py-1.5 rounded-full bg-[#F2EDE8] text-[#7A6558] border border-[#E0D5CB] cursor-default transition-colors"
                     >
                       {skill}

@@ -39,27 +39,30 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-28 px-6">
+    <section id="contact" className="py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold mb-3">
-            Contact
-          </p>
-          <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-[#2C2118] mb-5 leading-tight">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block w-5 h-px bg-[#C9956B]" />
+            <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold">
+              Contact
+            </p>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-5 leading-tight tracking-[-0.01em]">
             Let&apos;s build something together.
           </h2>
           <p className="text-[#9B8578] text-base leading-relaxed max-w-xl mb-14">
-            Whether you&apos;re looking to collaborate on an AI project, discuss opportunities, or
-            just have a conversation — I&apos;d love to hear from you.
+            Whether you&apos;re looking to collaborate on an AI project, discuss
+            opportunities, or just have a conversation — I&apos;d love to hear from you.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="grid sm:grid-cols-3 gap-4 mb-14">
+          <div className="grid sm:grid-cols-3 gap-4 mb-16">
             {links.map((link) => (
               <motion.div
                 key={link.label}
-                whileHover={{ y: -4, boxShadow: "0 8px 28px 0 rgba(44,33,24,0.08)" }}
+                whileHover={{ y: -4, boxShadow: "0 12px 36px 0 rgba(44,33,24,0.09)" }}
                 transition={{ duration: 0.2 }}
               >
                 {link.href ? (
@@ -67,12 +70,12 @@ export default function Contact() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex flex-col gap-3 bg-[#F2EDE8] rounded-2xl border border-[#E0D5CB] p-6 group transition-colors hover:bg-[#EDD9C8]/60 h-full"
+                    className="flex flex-col gap-3 bg-[#F2EDE8] rounded-2xl border border-[#E0D5CB] p-6 group transition-colors hover:bg-[#EDD9C8]/50 h-full"
                   >
                     <span className="text-[#C9956B]">{link.icon}</span>
                     <div>
                       <p className="text-[#9B8578] text-xs mb-1">{link.label}</p>
-                      <p className="text-[#2C2118] text-sm font-medium group-hover:text-[#C9956B] transition-colors break-all">
+                      <p className="text-[#1C1410] text-sm font-medium group-hover:text-[#C9956B] transition-colors break-all">
                         {link.value}
                       </p>
                     </div>
@@ -82,7 +85,7 @@ export default function Contact() {
                     <span className="text-[#C9956B]">{link.icon}</span>
                     <div>
                       <p className="text-[#9B8578] text-xs mb-1">{link.label}</p>
-                      <p className="text-[#2C2118] text-sm font-medium">{link.value}</p>
+                      <p className="text-[#1C1410] text-sm font-medium">{link.value}</p>
                     </div>
                   </div>
                 )}
@@ -96,8 +99,8 @@ export default function Contact() {
           <p className="font-serif text-[#9B8578] text-sm">
             Neng Yi (Leslie) Chieng
           </p>
-          <p className="text-[#C9956B] text-xs">
-            Built with Next.js & Tailwind CSS
+          <p className="text-[#C9956B]/70 text-xs tracking-wide">
+            Built with Next.js &amp; Tailwind CSS
           </p>
         </div>
       </div>

@@ -17,12 +17,13 @@ const courses = [
 
 function SwinburneLogo() {
   return (
-    <div className="w-14 h-14 rounded-xl overflow-hidden shadow-sm shrink-0" style={{ background: "#fff" }}>
+    <div
+      className="w-14 h-14 rounded-xl overflow-hidden shadow-sm shrink-0"
+      style={{ background: "#fff" }}
+    >
       <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
         <rect width="56" height="56" fill="white" />
-        {/* Red accent bar at top */}
         <rect width="56" height="6" fill="#CE0E2D" />
-        {/* Bold red "S" lettermark */}
         <text
           x="28"
           y="39"
@@ -34,7 +35,6 @@ function SwinburneLogo() {
         >
           S
         </text>
-        {/* "SUT" label at bottom */}
         <text
           x="28"
           y="52"
@@ -54,29 +54,41 @@ function SwinburneLogo() {
 
 export default function Education() {
   return (
-    <section id="education" className="py-28 px-6">
+    <section id="education" className="py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold mb-3">
-            Education
-          </p>
-          <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-[#2C2118] mb-16 leading-tight">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block w-5 h-px bg-[#C9956B]" />
+            <p className="text-[#C9956B] text-xs tracking-[0.22em] uppercase font-semibold">
+              Education
+            </p>
+          </div>
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-16 leading-tight tracking-[-0.01em]">
             Where I&apos;m learning.
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <motion.div
-            whileHover={{ y: -4, boxShadow: "0 12px 40px 0 rgba(44,33,24,0.09)" }}
+            whileHover={{ y: -4, boxShadow: "0 16px 48px 0 rgba(44,33,24,0.10)" }}
             transition={{ duration: 0.25 }}
-            className="bg-[#F2EDE8] rounded-2xl border border-[#E0D5CB] p-8 shadow-sm"
+            className="bg-[#F2EDE8] rounded-2xl border border-[#E0D5CB] p-8 shadow-sm relative overflow-hidden"
           >
+            {/* Left accent bar */}
+            <div
+              className="absolute left-0 top-0 bottom-0 w-0.5 rounded-l-2xl"
+              style={{
+                background:
+                  "linear-gradient(to bottom, #C9956B, rgba(201,149,107,0.15))",
+              }}
+            />
+
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
               <div>
                 <div className="mb-4">
                   <SwinburneLogo />
                 </div>
-                <h3 className="font-serif text-2xl font-semibold text-[#2C2118] leading-tight">
+                <h3 className="font-serif text-2xl font-semibold text-[#1C1410] leading-tight">
                   Swinburne University
                   <br />
                   of Technology
@@ -87,7 +99,10 @@ export default function Education() {
               </div>
               <div className="text-sm text-[#9B8578] sm:text-right shrink-0">
                 <p>Sep 2023 – Sep 2027</p>
-                <p className="text-[#C9956B] text-xs font-medium mt-1">In progress</p>
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium mt-1.5 px-2.5 py-0.5 rounded-full bg-[#C9956B]/10 text-[#C9956B] border border-[#C9956B]/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9956B]" />
+                  In progress
+                </span>
               </div>
             </div>
 
