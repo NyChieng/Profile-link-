@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const container = {
   hidden: {},
@@ -18,24 +18,41 @@ const item = {
 };
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  // Background layers drift up as you scroll (slower than content → parallax depth)
+  const bgY = useTransform(scrollY, [0, 600], [0, 80]);
+  // Content drifts up slightly faster, exaggerating the separation
+  const contentY = useTransform(scrollY, [0, 600], [0, -30]);
+
   return (
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ background: "#0D0B0A" }}
     >
-      {/* Grain texture */}
-      <div className="hero-grain absolute inset-0" />
-
-      {/* Radial centre glow — very subtle */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 50% at 50% 30%, #1f1814 0%, transparent 65%)",
-        }}
+      {/* Grain texture — parallaxes with background */}
+      <motion.div
+        style={{ y: bgY }}
+        className="hero-grain absolute inset-[-8%] pointer-events-none"
       />
 
+      {/* Radial centre glow — parallaxes with background */}
       <motion.div
+        style={{ y: bgY }}
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 50% at 50% 30%, #1f1814 0%, transparent 65%)",
+          }}
+        />
+      </motion.div>
+
+      {/* Main content */}
+      <motion.div
+        style={{ y: contentY }}
         variants={container}
         initial="hidden"
         animate="show"
@@ -115,12 +132,8 @@ export default function Hero() {
             href="#about"
             className="px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-colors duration-200 shadow-sm"
             style={{ background: "#EDE5DA", color: "#0D0B0A" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.background = "#ffffff")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.background = "#EDE5DA")
-            }
+            onMouseEnter={(e) => (e.currentTarget.style.background = "#ffffff")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "#EDE5DA")}
           >
             Discover my work
           </a>

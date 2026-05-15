@@ -48,6 +48,8 @@ export default function Contact() {
               Contact
             </p>
           </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
           <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-5 leading-tight tracking-[-0.01em]">
             Let&apos;s build something together.
           </h2>

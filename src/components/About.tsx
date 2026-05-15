@@ -1,11 +1,53 @@
 "use client";
 
 import FadeIn from "./FadeIn";
+import { useRef, useEffect, useState } from "react";
+import { useInView, animate } from "framer-motion";
+
+function AnimatedNumber({
+  from,
+  to,
+  suffix = "",
+}: {
+  from: number;
+  to: number;
+  suffix?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [value, setValue] = useState(from.toString());
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(from, to, {
+      duration: 1.5,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setValue(Math.round(v).toString()),
+    });
+    return () => controls.stop();
+  }, [inView, from, to]);
+
+  return (
+    <span ref={ref}>
+      {value}
+      {suffix}
+    </span>
+  );
+}
 
 const highlights = [
-  { value: "5+", label: "Years in client-facing roles" },
-  { value: "AI", label: "Major specialization" },
-  { value: "2027", label: "Expected graduation" },
+  {
+    node: <AnimatedNumber from={0} to={5} suffix="+" />,
+    label: "Years in client-facing roles",
+  },
+  {
+    node: "AI",
+    label: "Major specialization",
+  },
+  {
+    node: <AnimatedNumber from={2024} to={2027} />,
+    label: "Expected graduation",
+  },
 ];
 
 export default function About() {
@@ -19,6 +61,8 @@ export default function About() {
               About me
             </p>
           </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
           <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-10 leading-tight tracking-[-0.01em]">
             Building the future,
             <br />
@@ -27,7 +71,7 @@ export default function About() {
         </FadeIn>
 
         <div className="grid md:grid-cols-5 gap-12 items-start">
-          <FadeIn delay={0.1} className="md:col-span-3">
+          <FadeIn delay={0.2} className="md:col-span-3">
             <div className="space-y-5 text-[#5A4236] text-base leading-[1.9]">
               <p>
                 I&apos;m a Computer Science student at{" "}
@@ -57,14 +101,17 @@ export default function About() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2} className="md:col-span-2">
+          <FadeIn delay={0.3} className="md:col-span-2">
             <div className="bg-[#F2EDE8] rounded-2xl border border-[#E0D5CB] overflow-hidden shadow-sm">
               {/* Stats row */}
               <div className="grid grid-cols-3 divide-x divide-[#E0D5CB]">
                 {highlights.map((h) => (
-                  <div key={h.label} className="flex flex-col items-center text-center px-4 py-7">
+                  <div
+                    key={h.label}
+                    className="flex flex-col items-center text-center px-4 py-7"
+                  >
                     <span className="font-serif text-3xl font-bold text-[#C9956B] mb-1.5 leading-none">
-                      {h.value}
+                      {h.node}
                     </span>
                     <span className="text-[0.67rem] text-[#9B8578] leading-snug">
                       {h.label}

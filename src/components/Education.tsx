@@ -63,6 +63,8 @@ export default function Education() {
               Education
             </p>
           </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
           <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-16 leading-tight tracking-[-0.01em]">
             Where I&apos;m learning.
           </h2>

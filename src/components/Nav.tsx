@@ -14,11 +14,30 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = links.map((l) => l.href.slice(1));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((e) => e.isIntersecting);
+        if (visible) setActiveSection(`#${visible.target.id}`);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -45,17 +64,29 @@ export default function Nav() {
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="relative py-1">
               <a
                 href={link.href}
                 className={`text-sm transition-colors duration-300 tracking-wide ${
                   scrolled
-                    ? "text-[#9B8578] hover:text-[#1C1410]"
-                    : "text-[#EDE5DA]/55 hover:text-[#EDE5DA]"
+                    ? activeSection === link.href
+                      ? "text-[#1C1410]"
+                      : "text-[#9B8578] hover:text-[#1C1410]"
+                    : activeSection === link.href
+                    ? "text-[#EDE5DA]"
+                    : "text-[#EDE5DA]/50 hover:text-[#EDE5DA]"
                 }`}
               >
                 {link.label}
               </a>
+              {/* Sliding underline for active section — only shown when scrolled into body */}
+              {scrolled && activeSection === link.href && (
+                <motion.span
+                  layoutId="active-nav"
+                  className="absolute -bottom-0.5 left-0 right-0 h-px rounded-full bg-[#C9956B]"
+                  transition={{ type: "spring", bounce: 0.15, duration: 0.45 }}
+                />
+              )}
             </li>
           ))}
         </ul>
@@ -98,7 +129,11 @@ export default function Nav() {
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm text-[#9B8578] hover:text-[#1C1410] transition-colors block py-1"
+                  className={`text-sm transition-colors block py-1 ${
+                    activeSection === link.href
+                      ? "text-[#C9956B]"
+                      : "text-[#9B8578] hover:text-[#1C1410]"
+                  }`}
                 >
                   {link.label}
                 </a>
