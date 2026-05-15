@@ -47,16 +47,14 @@ export default function Nav() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#FAF8F5]/92 backdrop-blur-md shadow-sm border-b border-[#E0D5CB]"
+          ? "bg-[#0D0B0A]/90 backdrop-blur-md shadow-sm border-b border-white/[0.07]"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <a
           href="#"
-          className={`font-serif text-lg font-semibold tracking-tight transition-colors duration-500 ${
-            scrolled ? "text-[#1C1410]" : "text-[#EDE5DA]"
-          }`}
+          className="font-serif text-lg font-semibold tracking-tight text-[#EDE5DA]"
         >
           Leslie Chieng
         </a>
@@ -68,13 +66,9 @@ export default function Nav() {
               <a
                 href={link.href}
                 className={`text-sm transition-colors duration-300 tracking-wide ${
-                  scrolled
-                    ? activeSection === link.href
-                      ? "text-[#1C1410]"
-                      : "text-[#9B8578] hover:text-[#1C1410]"
-                    : activeSection === link.href
+                  activeSection === link.href
                     ? "text-[#EDE5DA]"
-                    : "text-[#EDE5DA]/50 hover:text-[#EDE5DA]"
+                    : "text-[#EDE5DA]/45 hover:text-[#EDE5DA]"
                 }`}
               >
                 {link.label}
@@ -98,14 +92,10 @@ export default function Nav() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-5 h-0.5 transition-all duration-300 ${
-              scrolled ? "bg-[#1C1410]" : "bg-[#EDE5DA]"
-            } ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
+            className={`block w-5 h-0.5 bg-[#EDE5DA] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
           />
           <span
-            className={`block w-5 h-0.5 transition-all duration-300 ${
-              scrolled ? "bg-[#1C1410]" : "bg-[#EDE5DA]"
-            } ${menuOpen ? "opacity-0" : ""}`}
+            className={`block w-5 h-0.5 bg-[#EDE5DA] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}
           />
           <span
             className={`block w-5 h-0.5 transition-all duration-300 ${
@@ -121,7 +111,7 @@ export default function Nav() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-[#FAF8F5]/96 backdrop-blur-md border-b border-[#E0D5CB]"
+          className="md:hidden bg-[#0D0B0A]/96 backdrop-blur-md border-b border-white/[0.07]"
         >
           <ul className="flex flex-col px-6 pb-4 gap-4">
             {links.map((link) => (

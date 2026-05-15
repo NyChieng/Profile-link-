@@ -17,8 +17,8 @@ html {
 }
 
 body {
-  background-color: #FAF8F5;
-  color: #1C1410;
+  background-color: #0D0B0A;
+  color: #EDE5DA;
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 
@@ -37,6 +37,6 @@ body {
 }
 
 ::selection {
-  background-color: #EDD9C8;
-  color: #1C1410;
+  background-color: rgba(201, 149, 107, 0.35);
+  color: #EDE5DA;
 }

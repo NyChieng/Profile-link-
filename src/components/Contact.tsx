@@ -39,7 +39,7 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-32 px-6">
+    <section id="contact" className="py-32 px-6 bg-[#0D0B0A]">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-4">
@@ -50,21 +50,21 @@ export default function Contact() {
           </div>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1C1410] mb-5 leading-tight tracking-[-0.01em]">
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#EDE5DA] mb-5 leading-tight tracking-[-0.01em]">
             Let&apos;s build something together.
           </h2>
-          <p className="text-[#9B8578] text-base leading-relaxed max-w-xl mb-14">
+          <p className="text-[#EDE5DA]/50 text-base leading-relaxed max-w-xl mb-14">
             Whether you&apos;re looking to collaborate on an AI project, discuss
             opportunities, or just have a conversation — I&apos;d love to hear from you.
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.1}>
+        <FadeIn delay={0.15}>
           <div className="grid sm:grid-cols-3 gap-4 mb-16">
             {links.map((link) => (
               <motion.div
                 key={link.label}
-                whileHover={{ y: -4, boxShadow: "0 12px 36px 0 rgba(44,33,24,0.09)" }}
+                whileHover={{ y: -4, boxShadow: "0 16px 40px 0 rgba(0,0,0,0.5)" }}
                 transition={{ duration: 0.2 }}
               >
                 {link.href ? (
@@ -72,22 +72,22 @@ export default function Contact() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex flex-col gap-3 bg-[#F2EDE8] rounded-2xl border border-[#E0D5CB] p-6 group transition-colors hover:bg-[#EDD9C8]/50 h-full"
+                    className="flex flex-col gap-3 bg-[#181410] rounded-2xl border border-white/[0.07] p-6 group transition-colors hover:bg-[#C9956B]/[0.07] hover:border-[#C9956B]/20 h-full"
                   >
                     <span className="text-[#C9956B]">{link.icon}</span>
                     <div>
-                      <p className="text-[#9B8578] text-xs mb-1">{link.label}</p>
-                      <p className="text-[#1C1410] text-sm font-medium group-hover:text-[#C9956B] transition-colors break-all">
+                      <p className="text-[#EDE5DA]/35 text-xs mb-1">{link.label}</p>
+                      <p className="text-[#EDE5DA] text-sm font-medium group-hover:text-[#C9956B] transition-colors break-all">
                         {link.value}
                       </p>
                     </div>
                   </a>
                 ) : (
-                  <div className="flex flex-col gap-3 bg-[#F2EDE8] rounded-2xl border border-[#E0D5CB] p-6 h-full">
+                  <div className="flex flex-col gap-3 bg-[#181410] rounded-2xl border border-white/[0.07] p-6 h-full">
                     <span className="text-[#C9956B]">{link.icon}</span>
                     <div>
-                      <p className="text-[#9B8578] text-xs mb-1">{link.label}</p>
-                      <p className="text-[#1C1410] text-sm font-medium">{link.value}</p>
+                      <p className="text-[#EDE5DA]/35 text-xs mb-1">{link.label}</p>
+                      <p className="text-[#EDE5DA] text-sm font-medium">{link.value}</p>
                     </div>
                   </div>
                 )}
@@ -96,12 +96,11 @@ export default function Contact() {
           </div>
         </FadeIn>
 
-        {/* Footer */}
-        <div className="border-t border-[#E0D5CB] pt-8 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="font-serif text-[#9B8578] text-sm">
+        <div className="border-t border-white/[0.07] pt-8 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="font-serif text-[#EDE5DA]/40 text-sm">
             Neng Yi (Leslie) Chieng
           </p>
-          <p className="text-[#C9956B]/70 text-xs tracking-wide">
+          <p className="text-[#C9956B]/50 text-xs tracking-wide">
             Built with Next.js &amp; Tailwind CSS
           </p>
         </div>
