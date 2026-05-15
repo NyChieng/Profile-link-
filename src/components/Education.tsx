@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import FadeIn from "./FadeIn";
 import { motion } from "framer-motion";
 
@@ -17,37 +18,14 @@ const courses = [
 
 function SwinburneLogo() {
   return (
-    <div
-      className="w-14 h-14 rounded-xl overflow-hidden shadow-sm shrink-0"
-      style={{ background: "#fff" }}
-    >
-      <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-        <rect width="56" height="56" fill="white" />
-        <rect width="56" height="6" fill="#CE0E2D" />
-        <text
-          x="28"
-          y="39"
-          textAnchor="middle"
-          fill="#CE0E2D"
-          fontSize="30"
-          fontFamily="Georgia, Times New Roman, serif"
-          fontWeight="700"
-        >
-          S
-        </text>
-        <text
-          x="28"
-          y="52"
-          textAnchor="middle"
-          fill="#CE0E2D"
-          fontSize="5.5"
-          fontFamily="Arial, sans-serif"
-          fontWeight="700"
-          letterSpacing="1"
-        >
-          SUT
-        </text>
-      </svg>
+    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-sm shrink-0 bg-black flex items-center justify-center">
+      <Image
+        src="/swinburne.png"
+        alt="Swinburne University of Technology"
+        width={64}
+        height={64}
+        className="object-cover w-full h-full"
+      />
     </div>
   );
 }

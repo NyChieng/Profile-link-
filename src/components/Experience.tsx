@@ -1,40 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import FadeIn from "./FadeIn";
 import { motion } from "framer-motion";
 
 function AllianzLogo() {
   return (
-    <div
-      className="w-14 h-14 rounded-xl shadow-sm overflow-hidden shrink-0"
-      style={{ background: "#003781" }}
-    >
-      <svg viewBox="0 0 56 56" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(28,24)">
-          <path
-            d="M0,-11 C-5,-11 -11,-5 -11,2 C-7,-2 -3,-4 0,-4 C3,-4 7,-2 11,2 C11,-5 5,-11 0,-11Z"
-            fill="white"
-          />
-          <path
-            d="M-11,2 C-11,8 -7,12 -3,13 L0,14 L3,13 C7,12 11,8 11,2 C7,-2 3,-4 0,-4 C-3,-4 -7,-2 -11,2Z"
-            fill="white"
-            opacity="0.85"
-          />
-          <path d="M-4,14 C-2,18 0,20 0,20 C0,20 2,18 4,14Z" fill="white" opacity="0.9" />
-        </g>
-        <text
-          x="28"
-          y="52"
-          textAnchor="middle"
-          fill="white"
-          fontSize="6.5"
-          fontFamily="Arial, Helvetica, sans-serif"
-          fontWeight="700"
-          letterSpacing="0.8"
-        >
-          ALLIANZ
-        </text>
-      </svg>
+    <div className="w-14 h-14 rounded-xl shadow-sm overflow-hidden shrink-0 bg-white flex items-center justify-center p-1.5">
+      <Image
+        src="/allianz.png"
+        alt="Allianz"
+        width={44}
+        height={44}
+        className="object-contain w-full h-full"
+      />
     </div>
   );
 }
