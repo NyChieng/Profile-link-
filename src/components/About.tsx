@@ -36,7 +36,7 @@ function AnimatedNumber({
 }
 
 const highlights = [
-  { node: <AnimatedNumber from={0} to={5} suffix="+" />, label: "Years in client-facing roles" },
+  { node: <AnimatedNumber from={0} to={3} suffix="+" />, label: "Years building software" },
   { node: "AI", label: "Major specialization" },
   { node: <AnimatedNumber from={2024} to={2027} />, label: "Expected graduation" },
 ];
@@ -69,25 +69,21 @@ export default function About() {
                 <span className="font-medium text-[#EDE5DA]">
                   Swinburne University of Technology
                 </span>{" "}
-                in Sarawak, Malaysia, majoring in Artificial Intelligence. I&apos;m
-                passionate about creating intelligent systems that solve real-world
-                problems — not just theoretically, but in ways that genuinely improve
-                people&apos;s lives.
+                in Sarawak, Malaysia, majoring in Artificial Intelligence. I
+                genuinely enjoy building things that work in the real world, not
+                just in theory.
               </p>
               <p>
-                Alongside my studies, I&apos;ve applied my technical skills
-                professionally — from architecting an OCR-powered accounting
-                automation system using the Gemini API, to overhauling network
-                infrastructure at a local trading company. I believe the best
-                engineers combine deep technical curiosity with a genuine care for
-                the people they&apos;re building for.
+                Right now I am working on an OCR pipeline powered by the Gemini API
+                to automate invoice processing for a local trading company. I also
+                helped overhaul their network infrastructure from the ground up.
+                Watching something I built go from idea to production is still the
+                best feeling.
               </p>
               <p>
-                Outside of code, I work as an insurance agent at{" "}
-                <span className="font-medium text-[#EDE5DA]">Allianz</span>, where
-                I&apos;ve spent five years building trust with clients and helping
-                them navigate important financial decisions — a skill I carry into
-                every technical project I take on.
+                I am most interested in LLMs, computer vision, and systems that turn
+                messy real world data into something actually useful. If that sounds
+                like something you are working on, I would love to hear about it.
               </p>
             </div>
           </FadeIn>

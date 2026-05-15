@@ -52,8 +52,8 @@ const experiences = [
     period: "3 months",
     location: "Sarawak, Malaysia · On-site",
     description:
-      "Spearheaded the digital transformation of YL Trading by architecting an automated accounting solution that utilizes OCR technology and the Gemini API to migrate legacy paper-based revenue data into a structured digital ecosystem. Engineered a comprehensive overhaul of the company's network infrastructure, optimizing connectivity and system reliability to support modernized, data-driven business operations.",
-    skills: ["OCR Technology", "Gemini API", "MySQL", "HTML", "Network Infrastructure", "Digital Transformation", "Python"],
+      "Built an OCR pipeline using the Gemini API to automate invoice processing and move years of paper records into a proper database. Also handled a full overhaul of the company's network infrastructure to improve reliability and set the team up for more modern workflows.",
+    skills: ["OCR Technology", "Gemini API", "MySQL", "Python", "Network Infrastructure", "HTML"],
   },
   {
     logo: <AllianzLogo />,
@@ -64,8 +64,8 @@ const experiences = [
     period: "5+ years",
     location: "Sarawak, Malaysia · Hybrid",
     description:
-      "Manage insurance and financial planning for clients across Sarawak, focusing on matching the right coverage to each individual's unique needs. Day-to-day responsibilities span new client acquisition, policy consultation, claims management, and ongoing relationship maintenance — with a strong emphasis on trust, clarity, and genuine care.",
-    skills: ["Financial Planning", "Client Relations", "Sales", "Marketing", "Insurance"],
+      "Work directly with clients across Sarawak to understand their needs and guide them toward the right solution for their situation. The role has taught me a lot about listening carefully, communicating clearly, and building relationships that actually last.",
+    skills: ["Client Relations", "Communication", "Sales", "Marketing"],
   },
 ];
 
